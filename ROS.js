@@ -372,31 +372,6 @@ summary.summary-arrow {
 }
 </style>`;
 
-outputHTML += `
-<script>
-document.addEventListener('click', function(e) {
-
-  const btn = e.target.closest('.action-dots-btn');
-
-  document.querySelectorAll('.action-dropdown').forEach(function(menu) {
-    if (!btn || menu.id !== btn.dataset.menuId) {
-      menu.style.display = 'none';
-    }
-  });
-
-  if (btn) {
-    const menu = document.getElementById(btn.dataset.menuId);
-
-    if (menu) {
-      menu.style.display =
-        menu.style.display === 'block' ? 'none' : 'block';
-    }
-
-    e.stopPropagation();
-  }
-});
-</script>`;
-
         document.getElementById("output").value = outputHTML;
     };
 
