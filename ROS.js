@@ -264,58 +264,55 @@ outputHTML += `<h4 style="margin-bottom:10px !important;">
                 const menuId = `menu-${role}-${item.apiName}`.replace(/[^a-zA-Z0-9_-]/g, '_');
 
 outputHTML += `<div style="margin-bottom:10px; margin-top:10px; width:100%">
-<div style="align-items:center; display:flex; gap:10px;">
-  <a
-    style="flex:1; display:block; padding:12px; font-size:14px; border-radius:10px; text-decoration:none; color:#000; background:#ffffff; font-weight:450; cursor:default;"
-  >
-    ${escapeHTML(item.guideName)}
-  </a>
-
-  <div style="position:relative;">
-    <button
-      type="button"
-      class="action-dots-btn blink-red"
-      data-menu-id="${menuId}"
-      style="
-        border:none;
-        background:#fff;
-        cursor:pointer;
-        font-size:22px;
-        color:#d10000;
-        padding:4px 10px;
-        border-radius:6px;
-      "
+  <div style="align-items:center; display:flex; gap:10px;">
+    <a
+      style="flex:1; display:block; padding:12px; font-size:14px; border-radius:10px; text-decoration:none; color:#000; background:#ffffff; font-weight:450; cursor:default;"
     >
-      ⋮
-    </button>
+      ${escapeHTML(item.guideName)}
+    </a>
 
-    <div
-      id="${menuId}"
-      class="action-dropdown"
-      style="
-        display:none;
-        position:absolute;
-        right:0;
-        top:35px;
-        min-width:160px;
-        background:#fff;
-        border:1px solid #ddd;
-        border-radius:8px;
-        box-shadow:0 4px 12px rgba(0,0,0,.15);
-        z-index:9999;
-      "
-    >
-      <a href="${simulationHref}" target="_blank" style="display:block;padding:10px;text-decoration:none;color:#000;">Simulation</a>
-      <a href="${stepGuideHref}" target="_blank" style="display:block;padding:10px;text-decoration:none;color:#000;">Step Guide</a>
-      <a href="${videoHref}" target="_blank" style="display:block;padding:10px;text-decoration:none;color:#000;">Video</a>
-    </div>
+    <details class="action-details" style="position:relative; flex-shrink:0;">
+      <summary
+        style="
+          list-style:none;
+          width:34px;
+          height:34px;
+          border:none;
+          background:#fff;
+          border-radius:8px;
+          cursor:pointer;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:22px;
+          color:#d10000;
+          font-weight:bold;
+          padding:0;
+        "
+        title="Actions"
+      >⋮</summary>
+
+      <div
+        style="
+          position:absolute;
+          right:0;
+          top:40px;
+          min-width:170px;
+          background:#fff;
+          border:1px solid #ddd;
+          border-radius:10px;
+          box-shadow:0 8px 24px rgba(0,0,0,.12);
+          z-index:9999;
+          overflow:hidden;
+        "
+      >
+        <a href="${simulationHref}" target="_blank" style="display:block; padding:10px 12px; text-decoration:none; color:#000;">Simulation</a>
+        <a href="${stepGuideHref}" target="_blank" style="display:block; padding:10px 12px; text-decoration:none; color:#000;">Step Guide</a>
+        <a href="${videoHref}" target="_blank" style="display:block; padding:10px 12px; text-decoration:none; color:#000;">Video</a>
+      </div>
+    </details>
   </div>
-</div>
 </div>\n`;
-            });
-
-            outputHTML += `</div>
-</details>\n\n`;
         });
 
         outputHTML += `<style type="text/css">
@@ -353,22 +350,25 @@ summary.summary-arrow {
     scrollbar-width: thin;
   }
   @keyframes blinkRed {
-  0%,100% {
-    color:#d10000;
-    opacity:1;
-  }
-  50% {
-    color:#ff4d4d;
-    opacity:0.4;
-  }
+  0%, 100% { color: #d10000; opacity: 1; }
+  50% { color: #ff4d4d; opacity: 0.35; }
 }
 
-.blink-red {
+.action-details > summary {
   animation: blinkRed 1s infinite;
 }
 
-.action-dropdown a:hover {
-  background:#f5f5f5;
+.action-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.action-details[open] > summary {
+  animation: none;
+  color: #d10000;
+}
+
+.action-details a:hover {
+  background: #f5f5f5;
 }
 </style>`;
 
