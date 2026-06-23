@@ -207,7 +207,7 @@ function generateHTMLFromExcel() {
 
         let outputHTML = "";
 
-outputHTML += `<h4 style="margin-bottom:0px !important;">
+outputHTML += `<h4 style="margin-bottom:10px !important;">
   <a
     ${!skipOmbpDescription
       ? `data-iridize-nextscenario="{&quot;nextScenario&quot;:&quot;${escapeHTML(ombpDescriptionApiName)}&quot;,&quot;dontClose&quot;:true,&quot;markClosed&quot;:false}"
