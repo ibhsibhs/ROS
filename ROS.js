@@ -224,7 +224,6 @@ outputHTML += `<h4 style="margin-bottom:0px !important;">
       text-decoration:none;
       border-radius:4px;
       font-size:16px;
-      border:1px solid #D8D8D8;
       position:relative;
       font-weight:bold;
       ${!skipOmbpDescription ? 'cursor:pointer;' : 'cursor:default;'}
