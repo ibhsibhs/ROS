@@ -207,35 +207,32 @@ function generateHTMLFromExcel() {
 
         let outputHTML = "";
 
-outputHTML += <h4><a style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 14px;
-      color: #000;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
-      position: relative;
-      cursor: default;
-    ">${escapeHTML(pillarName)} - ${escapeHTML(ombpName)}</a></h4>\n;
-
-        if (!skipOmbpDescription) {
-            outputHTML += <h4 style="margin-bottom: 0px !important;"><a data-iridize-nextscenario="{&quot;nextScenario&quot;:&quot;${escapeHTML(ombpDescriptionApiName)}&quot;,&quot;dontClose&quot;:true,&quot;markClosed&quot;:false}" data-iridize-role="nextScenarioBt" href="javascript:void(0)" style="
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 12px 14px;
-      color: #000;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 16px;
-      border: 1px solid #D8D8D8;
-      cursor: pointer;
-      position: relative;
-      font-weight: bold;
-    ">OMBP and Persona Description: ${escapeHTML(ombpName)} </a></h4>;
-        }
+outputHTML += `<h4 style="margin-bottom:0px !important;">
+  <a
+    ${!skipOmbpDescription
+      ? `data-iridize-nextscenario="{&quot;nextScenario&quot;:&quot;${escapeHTML(ombpDescriptionApiName)}&quot;,&quot;dontClose&quot;:true,&quot;markClosed&quot;:false}"
+         data-iridize-role="nextScenarioBt"
+         href="javascript:void(0)"`
+      : ''
+    }
+    style="
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      color:#000;
+      text-decoration:none;
+      border-radius:4px;
+      font-size:16px;
+      border:1px solid #D8D8D8;
+      position:relative;
+      font-weight:bold;
+      ${!skipOmbpDescription ? 'cursor:pointer;' : 'cursor:default;'}
+    "
+  >
+    ${escapeHTML(pillarName)} - ${escapeHTML(ombpName)}
+  </a>
+</h4>\n`;
 
         Object.keys(groupedData).forEach(function (role) {
             outputHTML += `<!-- ${escapeHTML(role)} Dropdown -->\n\n`;
