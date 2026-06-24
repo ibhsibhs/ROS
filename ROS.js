@@ -261,58 +261,46 @@ outputHTML += `<h4 style="margin-bottom:10px !important;">
                 const stepGuideHref = `https://guidedlearning.oracle.com/player/latest/api/scenario/export/v2/${encodeURIComponent(appId)}/${encodeURIComponent(item.apiName)}/lang/--/?draft=dev&windowMode=unpin`;
                 const videoHref = `https://guidedlearning.oracle.com/player/latest/api/scenario/simulation/see_it/${encodeURIComponent(appId)}/${encodeURIComponent(item.apiName)}/lang/--/?draft=dev&windowMode=unpin`;
 
-                const menuId = `menu-${role}-${item.apiName}`.replace(/[^a-zA-Z0-9_-]/g, '_');
+                outputHTML += `<div style="margin-bottom:10px; margin-top:10px; width:100%">
+<div style="align-items:center; display:flex; gap:10px;">
+  <a
+    style="flex:1; display:block; padding:12px; font-size: 14px; border-radius:10px; text-decoration:none; color:#000; background:#ffffff; font-weight:450; cursor: default;"
+  >
+    ${escapeHTML(item.guideName)}
+  </a>
 
-outputHTML += `<div style="margin-bottom:10px; margin-top:10px; width:100%">
-  <div style="align-items:center; display:flex; gap:10px;">
-    <a
-      style="flex:1; display:block; padding:12px; font-size:14px; border-radius:10px; text-decoration:none; color:#000; background:#ffffff; font-weight:450; cursor:default;"
-    >
-      ${escapeHTML(item.guideName)}
-    </a>
+  <a
+    style="cursor:pointer;"
+    href="${simulationHref}"
+    target="_blank"
+    title="Simulation"
+  >
+    <img alt="" height="20" src="https://guidedlearning.oracle.com/player/latest/api/app/${escapeHTML(appId)}/upload_content_image/flf2c0u/image/content_image" width="20" style="cursor:pointer;" />
+  </a>
 
-    <details class="action-details" style="position:relative; flex-shrink:0;">
-      <summary
-        style="
-          list-style:none;
-          width:34px;
-          height:34px;
-          border:none;
-          background:#fff;
-          border-radius:8px;
-          cursor:pointer;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-size:22px;
-          color:#d10000;
-          font-weight:bold;
-          padding:0;
-        "
-        title="Actions"
-      >⋮</summary>
+  <a
+    style="cursor:pointer;"
+    href="${stepGuideHref}"
+    target="_blank"
+    title="Step Guide"
+  >
+    <img alt="" height="20" src="https://guidedlearning.oracle.com/player/latest/api/app/${escapeHTML(appId)}/upload_content_image/m25rmta/image/content_image" width="20" style="cursor:pointer;" />
+  </a>
 
-      <div
-        style="
-          position:absolute;
-          right:0;
-          top:40px;
-          min-width:170px;
-          background:#fff;
-          border:1px solid #ddd;
-          border-radius:10px;
-          box-shadow:0 8px 24px rgba(0,0,0,.12);
-          z-index:9999;
-          overflow:hidden;
-        "
-      >
-        <a href="${simulationHref}" target="_blank" style="display:block; padding:10px 12px; text-decoration:none; color:#000;">Simulation</a>
-        <a href="${stepGuideHref}" target="_blank" style="display:block; padding:10px 12px; text-decoration:none; color:#000;">Step Guide</a>
-        <a href="${videoHref}" target="_blank" style="display:block; padding:10px 12px; text-decoration:none; color:#000;">Video</a>
-      </div>
-    </details>
-  </div>
+  <a
+    style="cursor:pointer;"
+    href="${videoHref}"
+    target="_blank"
+    title="Video"
+  >
+    <img alt="" height="20" src="https://guidedlearning.oracle.com/player/latest/api/app/${escapeHTML(appId)}/upload_content_image/yz7d6q8/image/content_image" width="20" style="cursor:pointer;" />
+  </a>
+</div>
 </div>\n`;
+            });
+
+            outputHTML += `</div>
+</details>\n\n`;
         });
 
         outputHTML += `<style type="text/css">
