@@ -233,6 +233,22 @@ outputHTML += `<h4 style="margin-bottom:10px !important;">
   </a>
 </h4>\n`;
 
+        outputHTML += `<h4 style="margin-bottom:10px !important;">
+  ...
+    ${escapeHTML(pillarName)} - ${escapeHTML(ombpName)}
+  </a>
+</h4>
+
+<div style="
+    text-align:center;
+    margin-bottom:12px;
+    font-size:14px;
+    color:#C74634;
+    font-weight:600;
+">
+    Click on Persona to see related Use Cases
+</div>\n`;
+
         Object.keys(groupedData).forEach(function (role) {
             outputHTML += `<!-- ${escapeHTML(role)} Dropdown -->\n\n`;
 
